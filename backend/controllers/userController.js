@@ -2,6 +2,10 @@ import userModel from '../models/userModel.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import validator from 'validator';
+import dotenv from 'dotenv';
+
+// Load environment variables from .env file
+dotenv.config();
 
 // Login user
 const loginUser = async (req, res) => {
@@ -24,7 +28,7 @@ const loginUser = async (req, res) => {
 };
 
 const createToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET);
+  return jwt.sign({ id }, process.env.JWT_SECRET);  // Ensure JWT_SECRET is loaded correctly
 };
 
 // Register user
